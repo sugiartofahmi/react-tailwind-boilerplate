@@ -1,15 +1,14 @@
-import { createBrowserRouter } from "react-router-dom";
-import Home from "../views/Home";
-import About from "../views/About";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-]);
+import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
+const Home = lazy(() => import("../views/Home"));
+const About = lazy(() => import("../views/About"));
+const Router = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  );
+};
 
-export default router;
+export default Router;
